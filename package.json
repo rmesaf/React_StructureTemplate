@@ -1,0 +1,38 @@
+{
+  "name": "react-project-template",
+  "version": "1.0.0",
+  "description": "A template for React projects using Babel, Webpack and  sass",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rmesaf/react-webpack-babel-sass.git"
+  },
+  "keywords": [
+    "React",
+    "Babel",
+    "Webpack",
+    "Sass"
+  ],
+  "author": "Ricardo Mesa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rmesaf/react-webpack-babel-sass/issues"
+  },
+  "homepage": "https://github.com/rmesaf/react-webpack-babel-sass#readme",
+  "dependencies": {
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1"
+  }
+}
