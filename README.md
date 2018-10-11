@@ -1,5 +1,5 @@
 # Using React with Babel, Webpack and Sass
-We will going to create a template for React projects using Babel, Webpack, sass and, of course, React. If you don´t want to know how it works and get this over with, just go to [Installing](#Installing) section.
+We will going to create a template for React projects using Babel, Webpack, Sass and, of course, React. If you don´t want to know how it works and get this over with, just go to [Installing](#Installing) section.
 
 ## Prerequisites
 
@@ -19,7 +19,7 @@ The first pair of modules that you need are React and ReactDOM. To install those
 ### Install Babel
 Since almost every React Component is written in ES6 you need to translate those components to ES5 in order to make your browser understand your code. Thats the reason why you need Babel. To install Babel, type ```npm i @babel/core babel-loader @babel/preset-env @babel/preset-react --save-dev``` on your terminal. Note the flag ```--save-dev```. That tells your package manager that your aplication will going to need that module in a *development* enviroment.
 
-### Configure Babel
+#### Configure Babel
 Create a config file for Babel named ```.babelrc``` in the root of your project. In the file type:
 
 ```
@@ -28,10 +28,161 @@ Create a config file for Babel named ```.babelrc``` in the root of your project.
         "@babel/preset-env",
         "@babel/preset-react"
     ],
-
+    "plugins": ["react-hot-loader/babel"]
 }
 ```
+### Install Path
+You will need to resolve some file paths. Use ```npm install --save path```.
+
+### Create the Project structure
+Define your project structure. This structure follow the principles of unique responsibility and granularity. Note that you allready have some of those files.
+
+```
+.
+├── build                           # Compiled files (alternatively `dist`).
+├── src                             # Source files (alternatively `lib` or `app`).
+    ├── components                  # React Components grouped as features or routes.
+    ├── styles                      # Global styles.
+        ├── partials
+            ├── _base.scss
+            ├── _mixins.scss
+            ├── _variables.scss   
+        ├── main.scss
+    ├── app.js                      # Outer React Component        
+├── .babelrc                        # Babel configuration file.
+├── .gitignore                      # If you use git as VCS.
+├── index.html
+├── index.js
+├── LICENSE 
+└── README.md                   
+
+```
+
+Here is a zoom-in on some files of those files:
+
+#### index.js
+```
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './src/app';
+
+ReactDOM.render(
+    <App />,
+    document.getElementById('app')
+);
+```
+#### index.html
+```
+<html>
+    <head>
+        <title>React App</title>
+    </head>
+    <body>
+        <div id="app"></div>
+    </body>
+</html>
+```
+#### app.js
+```
+import React from 'react';
+
+class App extends React.Component {
+    render(){
+        return (
+            <div>
+                <h2>Hello World !!!!!</h2>
+            </div>
+        );
+    }
+}
+
+export default App;
+```
+#### main.scss
+```
+@import "partials/variables",
+        "partials/base",
+        "partials/mixins";
+```
+
 ### Install Webpack
+Glue all together using Webpack. To install Webpack type  ```npm i webpack webpack-cli html-webpack-plugin html-loader --save-dev```.
+
+#### Configure Webpack
+Create a config file for Webpack named ```webpack.config.js``` in the root of your project. That file
+
+In the file type:
+
+```
+const path = require('path')
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+var HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
+    template: 'index.html',
+    filename: 'index.html',
+    inject: 'body'
+});
+
+module.exports = {
+    entry: './index.js',
+    output: {
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, 'build')
+    },
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            cacheDirectory: true,
+                            plugins: ['react-hot-loader/babel'],
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.html$/,
+                use: [
+                    {
+                        loader: "html-loader"
+                    }
+                ]
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    {
+                        loader: 'style-loader'
+                    },
+                    {
+                        loader: 'css-loader'
+                    },
+                    {
+                        loader: 'sass-loader'
+                    }
+                ]
+            }
+        ]
+    },
+    plugins: [HTMLWebpackPluginConfig]
+}
+```
+Now,it will be a good idea to learn what is a "loader". Think about "loader" as a code transformers, with that in mind let's understand webpack´s configuration object the previous file:
+
+* entry: Property that specifies where webpack will begin the transformation.
+* output:
+    * filename: Property that specifies the name of the new transformed js file.
+    * path: Property that specifies the route of the new transformed js file.
+* module:
+    * test: Property that specifies which files will be transform the loader. Uses a regular expression that represents all strings that end with that specific pattern i.e /\.js$/, /\.html$/, /\.scss$/.
+    * exclude: Property that specifies which files will not be transformed.
+    * use:
+        * loader: Property that specifies which type of transformation will be applied.
 
 
 ## Installing

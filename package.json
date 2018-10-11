@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/rmesaf/react-webpack-babel-sass#readme",
   "dependencies": {
+    "path": "^0.12.7",
     "react": "^16.5.2",
     "react-dom": "^16.5.2"
   },
