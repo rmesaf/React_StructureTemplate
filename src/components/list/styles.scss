@@ -1,0 +1,18 @@
+.list{
+    li{
+        background: transparent;
+        border-radius: 3px;
+        border: 2px solid palevioletred;
+        color: palevioletred;
+        margin: 0 1em;
+        padding: 0.25em 1em;
+        margin-bottom: 10px;
+        &.primary{
+            background: palevioletred;
+            color: white;
+        }
+        &:before{
+            color:palevioletred;
+        }
+    }
+}
