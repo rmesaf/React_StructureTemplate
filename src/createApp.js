@@ -1,7 +1,7 @@
 import React from 'react';
 import List from './components/list';
 
-class App extends React.Component {
+class CreateApp extends React.Component {
     render(){
         return (
             <div>
@@ -12,4 +12,4 @@ class App extends React.Component {
     }
 }
 
-export default App;
+export default CreateApp;

@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './src/app';
+import CreateApp from './createApp';
 
 ReactDOM.render(
-    <App />,
+    <CreateApp />,
     document.getElementById('app')
 );

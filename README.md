@@ -1,5 +1,5 @@
 # Using React with Babel, Webpack and Sass
-We will going to create a template for React projects using Babel, Webpack, Sass and, of course, React. If you don´t want to know how it works and get this over with, just go to [Installing](#Installing) section.
+We are going to create a template for React projects using Babel, Webpack, Sass and, of course, React. If you don´t want to know how it works and get this over with, just go to [Installing](#installing) section.
 
 ## Prerequisites
 
@@ -11,16 +11,16 @@ You need to have installed:
 ## React Setup
 
 ### Initialize your package Manager
-Select the location where you want your project and type ```npm init``` on the terminal. This instruction will get you a lot of prompts but is ok (for now) if you just tap "intro" all over the process. This instruction will create a file called package.json, that contains metadata about you project, including info about the modules that you did install in your project.
+Select the location where you want your project and type ```npm init``` on the terminal. This instruction will get you a lot of prompts but is ok (for now) if you just tap "intro" all over the process. This instruction will create a file called package.json, that contains metadata about your project, including info about the modules that you did install in your project.
 
 ### Install React & ReactDOM
-The first pair of modules that you need are React and ReactDOM. To install those modules you need type ```npm install --save react``` and ```npm install --save react-dom``` in the terminal. If you want You could condensate those instructions in one: ```npm install --save react react-dom```.  Note the flag ```--save```. That tells your package manager that your aplication will going to need that module in both enviroments: *Development* and *Production*.
+The first modules that you need are React and ReactDOM. To install those modules you need type ```npm install --save react``` and ```npm install --save react-dom``` in the terminal. If you want You could condensate those instructions in one: ```npm install --save react react-dom```.  Note the flag ```--save```. That tells your package manager that your application will gonna need that module in both environments: *Development* and *Production*.
 
 ### Install Babel
-Since almost every React Component is written in ES6 you need to translate those components to ES5 in order to make your browser understand your code. Thats the reason why you need Babel. To install Babel, type ```npm i @babel/core babel-loader @babel/preset-env @babel/preset-react --save-dev``` on your terminal. Note the flag ```--save-dev```. That tells your package manager that your aplication will going to need that module in a *development* enviroment.
+Since almost every React Component is written in ES6 you need to translate those components to ES5 in order to make your browser understand your code. That's the reason why you need Babel. To install Babel, type ```npm i @babel/core babel-loader @babel/preset-env @babel/preset-react --save-dev``` on your terminal. Note the flag ```--save-dev```. That tells your package manager that your application will gonna need that module in a *development* environment.
 
 ```
-**NOTE:** You probably will need to install older modules of babel because the new ones needs to resolve some dependencies. Type ```npm i babel-core babel-loader babel-preset-react --save-dev```
+NOTE: You probably will need to install older modules of babel because the new ones need to resolve some dependencies. Type npm i babel-core babel-loader babel-preset-react --save-dev
 ```
 
 
@@ -40,7 +40,7 @@ Create a config file for Babel named ```.babelrc``` in the root of your project.
 You will need to resolve some file paths. Use ```npm install --save path```.
 
 ### Create the Project structure
-Define your project structure. This structure follow the principles of unique responsibility and granularity. Note that you allready have some of those files.
+Define your project structure. This structure follows the principles of unique responsibility and granularity. Note that you already have some of those files.
 
 ```
 .
@@ -63,7 +63,7 @@ Define your project structure. This structure follow the principles of unique re
 
 ```
 
-Here is a zoom-in on some files of those files:
+Here is a zoom-in on some of those files:
 
 #### index.js
 ```
@@ -114,9 +114,7 @@ export default App;
 Glue all together using Webpack. To install Webpack type  ```npm i webpack webpack-cli webpack-dev-server html-webpack-plugin html-loader --save-dev```.
 
 #### Configure Webpack
-Create a config file for Webpack named ```webpack.config.js``` in the root of your project. That file
-
-In the file type:
+Create a config file for Webpack named ```webpack.config.js``` in the root of your project. In the file type:
 
 ```
 const path = require('path')
@@ -177,14 +175,14 @@ module.exports = {
 }
 ```
 
-Now,it will be a good idea to learn what is a "loader". Think about "loader" as a code transformers, with that in mind let's understand webpack´s configuration object the previous file:
+Now, it will be a good idea to learn what is a "loader". Think about "loader" as a code transformer, with that in mind let's understand webpack´s configuration object in the previous file:
 
-* entry: Property that specifies where webpack will begin the transformation.
+* entry: Property that specifies where Webpack will begin the transformation.
 * output:
     * filename: Property that specifies the name of the new transformed js file.
     * path: Property that specifies the route of the new transformed js file.
 * module:
-    * test: Property that specifies which files will be transform the loader. Uses a regular expression that represents all strings that end with that specific pattern i.e /\.js$/, /\.html$/, /\.scss$/.
+    * test: Property that specifies which files will be transformed by the loader. Uses a regular expression that represents all strings that end with that specific pattern i.e /\.js$/, /\.html$/, /\.scss$/.
     * exclude: Property that specifies which files will not be transformed.
     * use:
         * loader: Property that specifies which type of transformation will be applied.
@@ -215,7 +213,7 @@ Clone this project using this command on a terminal:
 git clone <url>
 ```
 
-Install all needed dependencies usign this command on a terminal:
+Install all needed dependencies using this command on a terminal:
 
 ```
 cd <folder>

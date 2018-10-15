@@ -3,13 +3,14 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 
 var HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
-    template: 'index.html',
+    template: './src/index.html',
     filename: 'index.html',
     inject: 'body'
 });
 
 module.exports = {
-    entry: './index.js',
+    mode: 'development',
+    entry: './src/index.js',
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'build')
