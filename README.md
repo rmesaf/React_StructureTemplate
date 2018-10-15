@@ -53,11 +53,11 @@ Define your project structure. This structure follows the principles of unique r
             ├── _mixins.scss
             ├── _variables.scss   
         ├── main.scss
-    ├── app.js                      # Outer React Component        
+    ├── createApp.js                # Outer React Component
+    ├── index.js                    # Entry Point.
+    └── index.html         
 ├── .babelrc                        # Babel configuration file.
 ├── .gitignore                      # If you use git as VCS.
-├── index.html
-├── index.js
 ├── LICENSE 
 └── README.md                   
 
@@ -69,10 +69,10 @@ Here is a zoom-in on some of those files:
 ```
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './src/app';
+import CreateApp from './createApp';
 
 ReactDOM.render(
-    <App />,
+    <CreateApp />,
     document.getElementById('app')
 );
 ```
@@ -87,11 +87,11 @@ ReactDOM.render(
     </body>
 </html>
 ```
-#### app.js
+#### createApp.js
 ```
 import React from 'react';
 
-class App extends React.Component {
+class CreateApp extends React.Component {
     render(){
         return (
             <div>
@@ -101,7 +101,7 @@ class App extends React.Component {
     }
 }
 
-export default App;
+export default CreateApp;
 ```
 #### main.scss
 ```
